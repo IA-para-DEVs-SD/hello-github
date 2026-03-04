@@ -2,22 +2,6 @@
 
 Repositório para praticar os comandos básicos do Git.
 
-## Fluxo de Trabalho Geral do Git
-
-```mermaid
-graph LR
-    A[Diretório de Trabalho] -->|git add| B[Área de Stage]
-    B -->|git commit| C[Repositório Local]
-    C -->|git push| D[Repositório Remoto]
-    D -->|git pull| C
-    D -->|git clone| A
-    C -->|git checkout| A
-    A -->|git status| A
-    C -->|git log| C
-    C -->|git branch| E[Nova Branch]
-    E -->|git merge| C
-```
-
 ## 10 Comandos Básicos do Git
 
 ### 1. Clone o repositório
