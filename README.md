@@ -2,19 +2,19 @@
 
 Repositório para praticar os comandos básicos do Git.
 
-## Fluxo de Trabalho do Git
+## Fluxo de Trabalho Geral do Git
 
 ```mermaid
 graph LR
-    A[Working Directory] -->|git add| B[Staging Area]
-    B -->|git commit| C[Local Repository]
-    C -->|git push| D[Remote Repository]
+    A[Diretório de Trabalho] -->|git add| B[Área de Stage]
+    B -->|git commit| C[Repositório Local]
+    C -->|git push| D[Repositório Remoto]
     D -->|git pull| C
     D -->|git clone| A
     C -->|git checkout| A
     A -->|git status| A
     C -->|git log| C
-    C -->|git branch| E[New Branch]
+    C -->|git branch| E[Nova Branch]
     E -->|git merge| C
 ```
 
@@ -26,11 +26,30 @@ git clone https://github.com/IA-para-DEVs-SD/hello-github.git
 ```
 Copia um repositório remoto para sua máquina local.
 
+```mermaid
+graph LR
+    A[Repositório Remoto<br/>GitHub] -->|git clone| B[Repositório Local<br/>Sua Máquina]
+    style A fill:#ff6b6b
+    style B fill:#51cf66
+```
+
 ### 2. Verifique o status dos arquivos
 ```bash
 git status
 ```
 Mostra quais arquivos foram modificados, adicionados ou estão prontos para commit.
+
+```mermaid
+graph TB
+    A[git status] --> B{Verifica Estado}
+    B --> C[Arquivos Modificados]
+    B --> D[Arquivos em Stage]
+    B --> E[Arquivos Não Rastreados]
+    style A fill:#4dabf7
+    style C fill:#ffd43b
+    style D fill:#51cf66
+    style E fill:#ff8787
+```
 
 ### 3. Adicione arquivos ao stage
 ```bash
@@ -40,11 +59,25 @@ git add arquivo.txt
 ```
 Prepara os arquivos modificados para serem commitados.
 
+```mermaid
+graph LR
+    A[Arquivos Modificados] -->|git add| B[Área de Stage<br/>Preparado para Commit]
+    style A fill:#ffd43b
+    style B fill:#51cf66
+```
+
 ### 4. Faça um commit das alterações
 ```bash
 git commit -m "Sua mensagem aqui"
 ```
 Salva as alterações no repositório local com uma mensagem descritiva.
+
+```mermaid
+graph LR
+    A[Área de Stage] -->|git commit -m| B[Repositório Local<br/>Histórico Salvo]
+    style A fill:#51cf66
+    style B fill:#4dabf7
+```
 
 ### 5. Envie as alterações para o GitHub
 ```bash
@@ -52,11 +85,25 @@ git push
 ```
 Envia seus commits locais para o repositório remoto.
 
+```mermaid
+graph LR
+    A[Repositório Local<br/>Seus Commits] -->|git push| B[Repositório Remoto<br/>GitHub]
+    style A fill:#4dabf7
+    style B fill:#ff6b6b
+```
+
 ### 6. Baixe as alterações do GitHub
 ```bash
 git pull
 ```
 Baixa e integra as alterações do repositório remoto para seu repositório local.
+
+```mermaid
+graph LR
+    A[Repositório Remoto<br/>GitHub] -->|git pull| B[Repositório Local<br/>Atualizado]
+    style A fill:#ff6b6b
+    style B fill:#4dabf7
+```
 
 ### 7. Veja o histórico de commits
 ```bash
@@ -66,6 +113,19 @@ git log --oneline
 ```
 Exibe o histórico de commits do projeto.
 
+```mermaid
+graph TB
+    A[git log] --> B[Histórico de Commits]
+    B --> C[Commit 3: Mensagem]
+    B --> D[Commit 2: Mensagem]
+    B --> E[Commit 1: Mensagem]
+    style A fill:#4dabf7
+    style B fill:#845ef7
+    style C fill:#e0e0e0
+    style D fill:#e0e0e0
+    style E fill:#e0e0e0
+```
+
 ### 8. Crie uma nova branch
 ```bash
 git branch nome-da-branch
@@ -74,17 +134,40 @@ git checkout -b nome-da-branch
 ```
 Cria um novo ramo de desenvolvimento.
 
+```mermaid
+graph LR
+    A[Branch Principal<br/>master/main] -->|git branch| B[Nova Branch<br/>feature]
+    style A fill:#4dabf7
+    style B fill:#845ef7
+```
+
 ### 9. Mude de branch
 ```bash
 git checkout nome-da-branch
 ```
 Alterna entre diferentes branches do projeto.
 
+```mermaid
+graph LR
+    A[Branch Atual<br/>master] -->|git checkout| B[Outra Branch<br/>feature]
+    style A fill:#4dabf7
+    style B fill:#845ef7
+```
+
 ### 10. Mescle branches
 ```bash
 git merge nome-da-branch
 ```
 Integra as alterações de uma branch em outra.
+
+```mermaid
+graph TB
+    A[Branch Feature] -->|git merge| C[Branch Master<br/>Código Integrado]
+    B[Branch Master] -->|git merge| C
+    style A fill:#845ef7
+    style B fill:#4dabf7
+    style C fill:#51cf66
+```
 
 ## Exercício Prático
 
